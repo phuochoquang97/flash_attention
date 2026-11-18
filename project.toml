@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flash-attention-from-scratch-m5"
+version = "0.2.0"
+description = "Educational FlashAttention implementations: NumPy reference, tiled online softmax, and Apple Silicon MLX/Metal"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "FlashAttention learning project"}]
+keywords = ["attention", "flashattention", "metal", "mlx", "apple-silicon", "education"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: MacOS",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+metal = ["mlx>=0.20"]
+dev = ["pytest>=7", "matplotlib>=3.7", "jupyterlab>=4"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["flash_attention*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
